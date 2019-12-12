@@ -1,3 +1,8 @@
+import numpy as np
+import requests
+import time
+
+
 def snap_normal(URL, mean, sd, k):
 
 
@@ -7,8 +12,8 @@ def snap_normal(URL, mean, sd, k):
     tic=time.perf_counter()
     requests.get(URL)
 
-    global data1
-    global data2
+    global data_Tom1
+    global data_Tom2
 
     data_norm_Tom1=[None]*10
     data_norm_Tom2=[None]*10
@@ -27,7 +32,7 @@ def snap_normal(URL, mean, sd, k):
 
             data_norm_Tom1[i] = JSON3_norm.json()
             data_norm_Tom2[i] = JSON4_norm.json()
-            print("working")
+            print("Load generator still working")
         else :
             short=1
 
@@ -40,10 +45,10 @@ def snap_normal(URL, mean, sd, k):
 
         data_norm_Tom1[i] = JSON1_norm.json()
         data_norm_Tom2[i] = JSON2_norm.json()
-        print("yay")
+        print("Load Generator Finished \nJSON data saved in variables data_Tom1 and data_Tom2")
 
-    data1=list(filter(None, data_norm_Tom1))
-    data2=list(filter(None, data_norm_Tom2))
+    data_Tom1=list(filter(None, data_norm_Tom1))
+    data_Tom2=list(filter(None, data_norm_Tom2))
 
 IP = input("Enter Host IP Address  ")
 m = float(input("Enter Mean  "))
