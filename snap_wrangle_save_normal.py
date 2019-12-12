@@ -1,4 +1,4 @@
-iimport numpy as np
+import numpy as np
 import requests
 import time
 from datetime import datetime as dt
@@ -21,6 +21,8 @@ def snap_normal(URL, mean, sd, k):
     global m
     global s_d
     global n
+    global df1
+    global df2
 
     data_norm_Tom1=[None]*10
     data_norm_Tom2=[None]*10
@@ -127,14 +129,35 @@ for i in range(0, len(stats1)):
 converted = pd.to_datetime(timestamp)
 TS1=converted.strftime("%H:%M:%S")
 
-dict1 = {'Time Stamps': TS1, 'CPU Total': cpu_total, 'CPU User': cpu_user, 'Memory Usage': mem_usage, 'Memory Max': mem_max}
+# making a column of the parameters
+mean=[None]*len(timestamp)
+stan_dev=[None]*len(timestamp)
+num=[None]*len(timestamp)
+for i in range(0, len(timestamp)):
+    mean[i]=m
+    stan_dev[i]=s_d
+    num[i]=n
+
+
+dict1 = {'Time Stamps': TS1,
+         'CPU Total': cpu_total,
+         'CPU User': cpu_user,
+         'Memory Usage': mem_usage,
+         'Memory Max': mem_max,
+         'Mean': m,
+         'Standard Deviation': s_d,
+         "Number of URL calls" :n
+        }
+
 df1 = pd.DataFrame(dict1)
 
 CPUdiff=df1['CPU Total'].diff()
 df1['CPU Total Difference'] = CPUdiff
 datadict1 = df1.set_index('Time Stamps').T.to_dict('df1')
 
-#Tomcat2
+
+
+#Tomcat2 -------
 stats2=[None]*len(data_Tom2)
 for i in range(0 , (len(data_Tom2))):
     stats2[i]=data_Tom2[i][list(data_Tom2[i].keys())[0]]['stats']
@@ -189,6 +212,15 @@ converted2 = pd.to_datetime(timestamp)
 TS2=converted.strftime("%H:%M:%S")
 
 dict2 = {'Time Stamps': TS2, 'CPU Total': cpu_total, 'CPU User': cpu_user, 'Memory Usage': mem_usage, 'Memory Max': mem_max}
+dict2 = {'Time Stamps': TS2,
+         'CPU Total': cpu_total,
+         'CPU User': cpu_user,
+         'Memory Usage': mem_usage,
+         'Memory Max': mem_max,
+         'Mean': m,
+         'Standard Deviation': s_d,
+         "Number of URL calls" :n
+        }
 
 df2 = pd.DataFrame(dict2)
 
