@@ -2,7 +2,7 @@ import numpy as np
 import requests
 import time
 from datetime import datetime as dt
-import pandas
+import pandas as pd
 import pymongo
 from pymongo import MongoClient
 
