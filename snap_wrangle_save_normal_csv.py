@@ -151,8 +151,8 @@ dict1 = {'Time Stamps': TS1,
 
 df1 = pd.DataFrame(dict1)
 
-CPUdiff=df1['CPU Total'].diff()
-df1['CPU Total Difference'] = CPUdiff
+CPUdiff=df1['CPU User'].diff()
+df1['CPU User Difference'] = CPUdiff
 datadict1 = df1.set_index('Time Stamps').T.to_dict('df1')
 
 
@@ -224,8 +224,8 @@ dict2 = {'Time Stamps': TS2,
 
 df2 = pd.DataFrame(dict2)
 
-CPUdiff=df2['CPU Total'].diff()
-df2['CPU Total Difference'] = CPUdiff
+CPUdiff=df2['CPU User'].diff()
+df2['CPU User Difference'] = CPUdiff
 datadict2 = df2.set_index('Time Stamps').T.to_dict('df2')
 
 
