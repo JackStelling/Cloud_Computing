@@ -8,13 +8,7 @@ from pymongo import MongoClient
 
 
 
-def snap_poisson(URL, lam, k):
-
-
-    i=0
-    i_r_t=np.random.poisson(lam, k)
-    tic=time.perf_counter()
-    requests.get(URL)
+def snap_poisson(URL, rate, n):
 
     global data_Tom1
     global data_Tom2
@@ -23,6 +17,12 @@ def snap_poisson(URL, lam, k):
     global k
     global df1
     global df2
+
+
+    i=0
+    i_r_t=np.random.poisson(lam, k)
+    tic=time.perf_counter()
+    requests.get(URL)
 
     data_pois_Tom1=[None]*10
     data_pois_Tom2=[None]*10
@@ -133,7 +133,7 @@ TS1=converted.strftime("%H:%M:%S")
 lamb=[None]*len(timestamp)
 num=[None]*len(timestamp)
 for i in range(0, len(timestamp)):
-    lamb[i]=m
+    lamb[i]=lam
     num[i]=k
 
 
@@ -227,7 +227,7 @@ datadict2 = df2.set_index('Time Stamps').T.to_dict('df2')
 
 #Now to save in MongoDB
 myclient = pymongo.MongoClient(IP,8081)
-mydb=myclient["Tomcat_Data"]
+mydb=myclient["Tomcat_Data_Pois"]
 mycol=mydb['Tomcat_Data1']
 mycol.insert_one(datadict1)
 mycol=mydb['Tomcat_Data2']
