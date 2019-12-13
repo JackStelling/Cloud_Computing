@@ -56,8 +56,8 @@ def snap_poisson(URL, rate, n):
         data_pois_Tom2[i] = JSON2_pois.json()
         print("Load Generator Finished \nJSON data saved in variables data_Tom1 and data_Tom2")
 
-    data_Tom1=list(filter(None, data_norm_Tom1))
-    data_Tom2=list(filter(None, data_norm_Tom2))
+    data_Tom1=list(filter(None, data_pois_Tom1))
+    data_Tom2=list(filter(None, data_pois_Tom2))
 
 IP = input("Enter Host IP Address  ")
 lam = float(input("Enter the rate (lambda) at which to call the URL  "))
