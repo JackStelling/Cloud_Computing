@@ -211,7 +211,6 @@ for i in range(0, len(stats2)):
 converted2 = pd.to_datetime(timestamp)
 TS2=converted.strftime("%H:%M:%S")
 
-dict2 = {'Time Stamps': TS2, 'CPU Total': cpu_total, 'CPU User': cpu_user, 'Memory Usage': mem_usage, 'Memory Max': mem_max}
 dict2 = {'Time Stamps': TS2,
          'CPU Total': cpu_total,
          'CPU User': cpu_user,
