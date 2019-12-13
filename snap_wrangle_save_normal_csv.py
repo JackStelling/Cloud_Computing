@@ -87,7 +87,7 @@ for j in range(0, (len(stats1))):
 # next get cpu data
 cpu_total_list=[None]*len(stats1)
 for j in range(0, len(stats1)):
-    cpu_total_list[j] = [i['cpu']['usage']['user'] for i in stats1[j]]
+    cpu_total_list[j] = [i['cpu']['usage']['total'] for i in stats1[j]]
 
 cpu_user_list=[None]*len(stats1)
 for j in range(0, len(stats1)):
@@ -169,7 +169,7 @@ for j in range(0, (len(stats2))):
 # next get cpu data
 cpu_total_list=[None]*len(stats2)
 for j in range(0, len(stats2)):
-    cpu_total_list[j] = [i['cpu']['usage']['user'] for i in stats2[j]]
+    cpu_total_list[j] = [i['cpu']['usage']['total'] for i in stats2[j]]
 
 cpu_user_list=[None]*len(stats2)
 for j in range(0, len(stats2)):
