@@ -239,7 +239,7 @@ file1=file1[:24] +m+ file1[28:29]+s_d+file1[31:32]+n+file1[33:]
 
 
 file2 ='/Cloud_Computing/CSV/T2_mean_sd_k.csv'
-file2=file2[:24] +m+ file2[28:29]+s_d+file2[31:32]+n+file1[33:]
+file2=file2[:24] +m+ file2[28:29]+s_d+file2[31:32]+n+file2[33:]
 
 df1.to_csv(file1, index=None, header=True)
 df2.to_csv(file2, index=None, header=True)
